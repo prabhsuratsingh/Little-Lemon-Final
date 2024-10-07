@@ -11,9 +11,28 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.room.Room
 import com.example.littlelemonfinal.ui.theme.LittleLemonFinalTheme
+import io.ktor.client.HttpClient
+import io.ktor.client.engine.android.Android
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.http.ContentType
+import io.ktor.serialization.kotlinx.json.json
 
 class MainActivity : ComponentActivity() {
+
+    private val client = HttpClient(Android) {
+        install(ContentNegotiation) {
+            json(contentType = ContentType("text", "plain"))
+        }
+    }
+
+    private val database by lazy {
+        Room.databaseBuilder(applicationContext, LittleLemonDatabase::class.java, "little-lemon")
+            .fallbackToDestructiveMigration()
+            .build()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
