@@ -3,7 +3,8 @@ plugins {
     alias(libs.plugins.kotlin.android)
 
     id("kotlin-kapt")
-    kotlin("plugin.serialization") version "1.5.21"
+    id ("org.jetbrains.kotlin.plugin.serialization") version "1.7.20"
+    //kotlin("plugin.serialization") version "1.5.21"
 }
 
 android {

@@ -20,15 +20,15 @@ fun NavComposable(navController: NavHostController, database: LittleLemonDatabas
         }
     ) {
         composable(Onboarding.route) {
-            //OnboardingPage(navController = navController)
+            OnboardingPage(navController = navController)
         }
 
         composable(Home.route) {
-            //HomePage(navController = navController)
+            HomePage(navController = navController, database)
         }
 
         composable(Profile.route) {
-            //ProfilePage(navController = navController)
+            ProfilePage(navController = navController)
         }
     }
 }

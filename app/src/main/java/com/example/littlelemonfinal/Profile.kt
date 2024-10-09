@@ -8,6 +8,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -25,6 +26,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -32,7 +34,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.littlelemonfinal.ui.theme.AppColors
 
 @Composable
-fun Profile(navController: NavController) {
+fun ProfilePage(navController: NavController) {
     val context = LocalContext.current
     val sharedPreferences = context.getSharedPreferences(USER_PROFILE, Context.MODE_PRIVATE)
     val firstName = sharedPreferences.getString(FIRST_NAME, "N/A")
@@ -53,42 +55,48 @@ fun Profile(navController: NavController) {
         Text(
             text = "PROFILE",
             style = typography.headlineMedium,
-            modifier = Modifier.padding(top = 16.dp)
+            modifier = Modifier.padding(top = 24.dp, bottom = 24.dp)
         )
 
 
         Text(
             "$firstName",
             modifier = Modifier
-                .padding(top = 8.dp)
+                .fillMaxWidth()
+                .padding(horizontal = 30.dp, vertical = 8.dp)
                 .border(
                     BorderStroke(2.dp, SolidColor(AppColors.charcoal)),
                     shape = RoundedCornerShape(5.dp)
                 )
                 .padding(5.dp),
-            style = typography.bodyMedium
+            style = typography.bodyMedium,
+            textAlign = TextAlign.Center
         )
         Text(
             "$lastName",
             modifier = Modifier
-                .padding(top = 8.dp)
+                .fillMaxWidth()
+                .padding(horizontal = 30.dp, vertical = 8.dp)
                 .border(
                     BorderStroke(2.dp, SolidColor(AppColors.charcoal)),
                     shape = RoundedCornerShape(5.dp)
                 )
                 .padding(5.dp),
-            style = typography.bodyMedium
+            style = typography.bodyMedium,
+            textAlign = TextAlign.Center
         )
         Text(
             "$email",
             modifier = Modifier
-                .padding(top = 8.dp)
+                .fillMaxWidth()
+                .padding(horizontal = 30.dp, vertical = 8.dp)
                 .border(
                     BorderStroke(2.dp, SolidColor(AppColors.charcoal)),
                     shape = RoundedCornerShape(5.dp)
                 )
                 .padding(5.dp),
-            style = typography.bodyMedium
+            style = typography.bodyMedium,
+            textAlign = TextAlign.Center
         )
 
         Button(
@@ -117,5 +125,5 @@ fun Profile(navController: NavController) {
 @Composable
 fun ProfilePreview() {
     val navController = rememberNavController()
-    Profile(navController)
+    ProfilePage(navController)
 }
