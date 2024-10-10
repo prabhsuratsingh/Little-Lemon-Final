@@ -20,6 +20,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Divider
@@ -48,7 +49,9 @@ fun HomePage(navController: NavHostController, database: LittleLemonDatabase) {
 
 
     Column(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White)
     ) {
         Row(
             modifier = Modifier
@@ -66,14 +69,15 @@ fun HomePage(navController: NavHostController, database: LittleLemonDatabase) {
                     .width(200.dp)
             )
             Spacer(modifier = Modifier.weight(0.5f))
-            Image(
-                painter = painterResource(id = R.drawable.logo),
+            Icon(
+                Icons.Default.Person,
                 contentDescription = "Profile picture",
                 modifier = Modifier
                     .padding(end = 15.dp)
                     .size(50.dp)
                     .clip(CircleShape)
                     .clickable { navController.navigate(Profile.route) },
+                tint = Color.Black
             )
         }
         HeroSection(menuItemsDatabase)
